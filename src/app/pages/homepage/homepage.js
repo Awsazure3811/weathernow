@@ -26,7 +26,7 @@ export default function HomePage() {
             // const latitude = 37.7749; 
             // const longitude = -122.4194; 
 
-    //         const zipCode = 530047;
+            // const zipCode = 530047;
 
     //         const getWeather = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m&hourly=relativehumidity_2m`;
     //         //           https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m
@@ -39,15 +39,15 @@ export default function HomePage() {
             // const findZip = `https://maps.googleapis.com/maps/api/geocode/json?address=${zipCode}&key=AIzaSyDVPLLlJAQ679Frd0gu11khJ9mW02wsvWQ`;
             // const OWUrl = `https://api.openweathermap.org/data/2.5/find?q=Hyderabad&units=imperial&type=accurate&mode=json&APPID=967ea2ee066696f316d6a84ed7e3f80f`;
 
-    //         const weather_response = await fetch(getWeather);
-    //         const city_response = await fetch(findcity);
-    //         const zip_response = await fetch(findZip);
-    //         const OW_response = await fetch(OWUrl);
+            // const weather_response = await fetch(getWeather);
+            // const city_response = await fetch(findcity);
+            // const zip_response = await fetch(findZip);
+            // const OW_response = await fetch(OWUrl);
 
-    //         const weather_data = await weather_response.json();
-    //         const city_data = await city_response.json();
-    //         const zip_data = await zip_response.json();
-    //         const OW_data = await OW_response.json();
+            // const weather_data = await weather_response.json();
+            // const city_data = await city_response.json();
+            // const zip_data = await zip_response.json();
+            // const OW_data = await OW_response.json();
 
     //         setWeatherData(weather_data);
     //         setCityData(city_data);
@@ -101,17 +101,20 @@ export default function HomePage() {
 
     // }
 
-    
+    const [featureData, setFeatureData] = useState([]);
+    const getSearchData = (val) => {
+        setFeatureData(val);
+    }
 
 
     return(
         <div className="container">
             {/* <button onClick={sample}>Clickme</button> */}
             <div className="search-section-wrapper">
-                <SearchSection></SearchSection>
+                <SearchSection getSearchData={getSearchData}></SearchSection>
             </div>
             <div className="featurecard-wrapper">
-                <FeaturedCard></FeaturedCard>
+                <FeaturedCard featureData={featureData}></FeaturedCard>
             </div>
             <div className="daily-forecast-wrapper">
                 <DailyForecast></DailyForecast>
@@ -125,6 +128,4 @@ export default function HomePage() {
         </div>
         
     )
-
 }
-
