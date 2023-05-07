@@ -17,10 +17,15 @@
 } */
 
 body {
-  background-color: #110f20;
+  background-color: #379cb6;
   color: #ffffff;
 }
 
 .main {
   height: 100vh;
+}
+
+.navbar {
+  font-size: 20px;
+  padding: 2rem;
 }

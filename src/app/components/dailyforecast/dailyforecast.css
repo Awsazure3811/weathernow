@@ -1,0 +1,33 @@
+.daily-forecast-content{
+    width: 100%;
+    padding: 1rem;
+    text-align: center;
+    justify-content:center;
+    align-items:center;
+}
+.img{
+    height: 1rem;
+    margin-left: 8px;
+}
+
+
+.side{
+    display:flex;
+    justify-content: center;
+    align-items:center;
+
+}
+
+.text{
+    justify-content: center;
+    align-items:center;
+}
+
+
+.appinterface{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    flex-direction: column;
+    width:100%;
+}
