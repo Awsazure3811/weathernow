@@ -1,13 +1,18 @@
 import "./featuredcard.css";
 
-export default function FeaturedCard() {
+export default function FeaturedCard(props) {
     
+    console.log('Hello form featurecard');
+    console.log(props.featureData);
+
+    const cityName = props.featureData[0];
+    const countryIndia = props.featureData[2];
 
     return(
         <div className="featurecard">
             <div className="card-details">
                 <div className="card-details-place">
-                    <h1 className="place-heading text-center">Visakhapatnam, AP</h1>
+                    <h1 className="place-heading text-center">{cityName}, {countryIndia}</h1>
                 </div>
                 <div className="card-more-details">
                     <p className="text-center">Saturday, 5 May 2023 | Local Time: 07:02 pm</p>
@@ -17,7 +22,7 @@ export default function FeaturedCard() {
                 <div className="icon-temp-details">
                     <img src="/icons/sun-48.png" alt="icon" className="temp-icon"></img>
                     <div className="temp-details">
-                        <h1 className="temp-num">38<sup>*C</sup></h1>
+                        <h1 className="temp-num">38<sup><sup>o</sup>C</sup></h1>
                         <p className="temp-feel">Feels Like: 40</p>
                         <h1 className="text-center mt-2">Clear</h1>
                     </div>

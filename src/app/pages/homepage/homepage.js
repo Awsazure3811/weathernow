@@ -86,17 +86,20 @@ export default function HomePage() {
 
     // }
 
-    
+    const [featureData, setFeatureData] = useState([]);
+    const getSearchData = (val) => {
+        setFeatureData(val);
+    }
 
 
     return(
         <div className="container">
             {/* <button onClick={sample}>Clickme</button> */}
             <div className="search-section-wrapper">
-                <SearchSection></SearchSection>
+                <SearchSection getSearchData={getSearchData}></SearchSection>
             </div>
             <div className="featurecard-wrapper">
-                <FeaturedCard></FeaturedCard>
+                <FeaturedCard featureData={featureData}></FeaturedCard>
             </div>
             <div className="daily-forecast-wrapper">
                 <DailyForecast></DailyForecast>
