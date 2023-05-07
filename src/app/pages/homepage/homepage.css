@@ -52,8 +52,13 @@
 }
 
 .hourly-forecast-wrapper {
-    overflow-x: auto;
-    position: absolute;
+    background-color: #00000025;
+    overflow:auto;
+    border-radius: 1rem;
+    /* position: absolute; */
+    display: flex;
+    width: 40rem;
+    margin: 1.7rem;
 }
 
 .forecast-wrapper {

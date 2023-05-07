@@ -4,8 +4,8 @@ export default function FeaturedCard(props) {
     const d=new Date(props.time);
     const s=new Date();
 
-    console.log('Hello form featurecard');
-    console.log(props.temp);
+    // console.log('Hello form featurecard');
+    // console.log(props.temp);
 
     const cityName = props.featureData[0];
     const countryIndia = props.featureData[2];
@@ -31,9 +31,9 @@ export default function FeaturedCard(props) {
                     </div>
                 </div>
                 <div className="pre-hum-wi">
-                    <div className="pre-hum-wi-text"><img src="/icons/pressure-48-white.png" alt="icon" className="pre-hum-wi-icon"></img> Pressure {props.pressure}</div>
-                    <div className="pre-hum-wi-text"><img src="/icons/water-48-white.png" alt="icon" className="pre-hum-wi-icon"></img> Humidity {props.humidity}</div>
-                    <div className="pre-hum-wi-text"><img src="/icons/wind-48-white.png" alt="icon" className="pre-hum-wi-icon"></img> Wind {props.wind}</div>
+                    <div className="pre-hum-wi-text"><img src="/icons/pressure-48-white.png" alt="icon" className="pre-hum-wi-icon"></img> Pressure {props.pressure}bar</div>
+                    <div className="pre-hum-wi-text"><img src="/icons/water-48-white.png" alt="icon" className="pre-hum-wi-icon"></img> Humidity {props.humidity}%</div>
+                    <div className="pre-hum-wi-text"><img src="/icons/wind-48-white.png" alt="icon" className="pre-hum-wi-icon"></img> Wind {props.wind}Km/h</div>
                 </div>
             </div>
         </div>
