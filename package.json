@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "autoprefixer": "10.4.14",
+    "countrycitystatejson": "^21.3.2702",
     "eslint": "8.40.0",
     "eslint-config-next": "13.4.1",
     "next": "13.4.1",
