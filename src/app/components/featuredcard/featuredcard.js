@@ -1,12 +1,15 @@
 import "./featuredcard.css";
 
 export default function FeaturedCard(props) {
-    
+    const d=new Date(props.time);
+    const s=new Date();
+
     console.log('Hello form featurecard');
-    console.log(props.featureData);
+    console.log(props.temp);
 
     const cityName = props.featureData[0];
     const countryIndia = props.featureData[2];
+
 
     return(
         <div className="featurecard">
@@ -15,22 +18,22 @@ export default function FeaturedCard(props) {
                     <h1 className="place-heading text-center">{cityName}, {countryIndia}</h1>
                 </div>
                 <div className="card-more-details">
-                    <p className="text-center">Saturday, 5 May 2023 | Local Time: 07:02 pm</p>
+                    <p className="text-center">{s.toDateString().slice(0,3)}, {s.toDateString().slice(4,10)} 2023 | Local Time: {s.getHours()} : {s.getMinutes()}</p>
                 </div>
             </div>
             <div className="temperature-details">
                 <div className="icon-temp-details">
                     <img src="/icons/sun-48.png" alt="icon" className="temp-icon"></img>
                     <div className="temp-details">
-                        <h1 className="temp-num">38<sup><sup>o</sup>C</sup></h1>
-                        <p className="temp-feel">Feels Like: 40</p>
-                        <h1 className="text-center mt-2">Clear</h1>
+                        <h1 className="temp-num">{props.temp}<sup><sup>o</sup>C</sup></h1>
+                        <p className="temp-feel">Feels Like: {props.fell_like}</p>
+                        <h1 className="text-center mt-2">{props.weather}</h1>
                     </div>
                 </div>
                 <div className="pre-hum-wi">
-                    <div className="pre-hum-wi-text"><img src="/icons/pressure-48-white.png" alt="icon" className="pre-hum-wi-icon"></img> Pressure</div>
-                    <div className="pre-hum-wi-text"><img src="/icons/water-48-white.png" alt="icon" className="pre-hum-wi-icon"></img> Humidity</div>
-                    <div className="pre-hum-wi-text"><img src="/icons/wind-48-white.png" alt="icon" className="pre-hum-wi-icon"></img> Wind</div>
+                    <div className="pre-hum-wi-text"><img src="/icons/pressure-48-white.png" alt="icon" className="pre-hum-wi-icon"></img> Pressure {props.pressure}</div>
+                    <div className="pre-hum-wi-text"><img src="/icons/water-48-white.png" alt="icon" className="pre-hum-wi-icon"></img> Humidity {props.humidity}</div>
+                    <div className="pre-hum-wi-text"><img src="/icons/wind-48-white.png" alt="icon" className="pre-hum-wi-icon"></img> Wind {props.wind}</div>
                 </div>
             </div>
         </div>

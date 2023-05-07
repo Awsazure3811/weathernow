@@ -23,9 +23,16 @@ body {
 
 .main {
   height: 100vh;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  flex-direction: column;
 }
 
 .navbar {
   font-size: 20px;
   padding: 2rem;
+  height: fit-content;
+  width: fit-content;
+  /* margin: 0; */
 }

@@ -22,12 +22,13 @@
 
 .search-suggest {
     display: block;
-
+    width: inherit;
+    position: relative;
 }
 
 .suggestions-content {
     background-color: #fff;
-    width: 35%;
+    width: inherit;
     padding: 0.5rem;
     color: #000;
     border-top: 1px solid black;

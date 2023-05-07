@@ -1,7 +1,7 @@
 .Container{
     padding-top: 10px;
-    height: 220px;
-    width: 150px;
+    height: 10rem;
+    width: 9rem;
     background-color: rgba(60, 179, 206, 0);
     color: rgb(255, 255, 255);
     text-align: center;
@@ -13,18 +13,16 @@
 }
 
 .iconN{
-    height:40px;
-    width: 40px;
+    height:2rem;
+    /* width: 40px; */
     position:relative;
     top: 10px;
 
 }
 .iconH{
-    height:20px;
-    width: 20px;
-    position:relative;
-    left:20%;
-    top:6px;
+    height:1.3rem;
+    /* width: 20px; */
+    margin-left: 0.7rem;
 }
 .iconS{
     display: flex;
@@ -48,3 +46,23 @@
     top: 2px;
 
 }
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }

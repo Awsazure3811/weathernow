@@ -3,7 +3,7 @@ import "./searchbox.css";
 import { getCitiesByName } from "countrycitystatejson";
 
 export default function SearchSection(props) {
-    
+
     const parseSelectedCity = (val) => {
         props.getSearchData(val);
     }
@@ -13,7 +13,6 @@ export default function SearchSection(props) {
         <div className="search-content">
             <SearchBox parseSelectedCity={parseSelectedCity}></SearchBox>
             <button className="search-btn"><img src="/icons/search-white.png" className="search-img"></img></button>
-            <button className="getlocation-btn search-btn"><img src="/icons/location-50-white.png" className="search-img"></img></button>
         </div>
     )
 }
@@ -40,7 +39,7 @@ function SearchBox(props) {
     }
 
     return(
-        <div className="search-content search-suggest">
+        <div className="search-suggest">
             <input type="text" placeholder="Search city..." name="search-input" className="search-input" id="search-box-input" onChange={parseSearch} />
             <GetSuggestion suggestions={suggestions} getCity={getCity}></GetSuggestion>
         </div>
