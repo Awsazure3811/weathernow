@@ -1,0 +1,11 @@
+{
+	"01d": ["clear-sky1.jpg"],
+	"02d": ["few-clouds1.jpg", "few-clouds2.jpg"],
+	"03d": ["scattered-clouds1.jpg", "scattered-clouds2.jpg", "scattered-clouds3.jpg", "scattered-clouds4.jpg", "scattered-clouds5.jpg"],
+	"04d": ["broken-clouds1.jpg"],
+	"09d": ["shower-rain1.jpg"],
+	"10d": ["rain1.jpg", "rain2.jpg"],
+	"11d": ["thunderstorm1.jpg"],
+	"13d": ["snow1.jpg"],
+	"50d": ["mist1.jpg", "mist2.jpg", "mist3.jpg"]
+}

@@ -1,20 +1,18 @@
-// import { SearchBox } from "@/app/components/searchbox";
 import { useState, useEffect } from "react";
 import "./homepage.css";
 import Hourly from "src/app/components/Hourly/Hourly.js"
-// import { Link } from "react-router-dom";
-// import { useParams } from 'react-router-dom'
-
-
 import FeaturedCard from "@/app/components/featuredcard/featuredcard";
 import SearchSection from "@/app/components/searchbox/searchbox";
 import DailyForecast from "@/app/components/dailyforecast/dailyforecast";
-// import ForecastDetails from "@/app/components/forecastdetails/ForecastDetails";
 import ForecastDetails from "@/app/components/forecastdetails/forecastdetails";
-import HourlyFunction from "@/app/components/hourlyforecast/hourlyforecast";
-// import { getCitiesByName } from "countrycitystatejson";
 
-export default function HomePage() {
+export default function HomePage(props) {
+
+
+    const setWeatherCode = (code) => {
+        props.setWeatherCode(code);
+    }
+
     const [latitude, setLatitude] = useState(null);
     const [longitude, setLongitude] = useState(null);
     const getLocation = () => {
@@ -122,6 +120,7 @@ export default function HomePage() {
         const fell_like=dict["list"]["0"]["main"]["feels_like"];
         get_data(lat,long,humid,pressure,fell_like, weather);
         getHourlyData(lat,long);
+        setWeatherCode(dict["list"]["0"]["weather"]['0']["icon"]);
     }
 
     const [hour,setHour]=useState([]);
