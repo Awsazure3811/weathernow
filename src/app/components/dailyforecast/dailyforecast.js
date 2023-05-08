@@ -1,11 +1,17 @@
 import "./dailyforecast.css";
 
+
 export default function DailyForecast(props) {
     const d = new Date(props.time);
     const day=d.toString().slice(0,3);
     const dat=d.toString().slice(4,10);
+
+    const selectDailyFC = () => {
+        props.catchClickDate(props.i);
+    }
+
     return(
-        <div className="daily-forecast-content">
+        <div className="daily-forecast-content" onClick={selectDailyFC}>
             <div className="text">
                 <h4>{day}</h4>
             </div>

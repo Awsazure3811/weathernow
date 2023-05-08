@@ -106,7 +106,7 @@ export default function HomePage() {
     }
     
     const getcoord=async (p) => {
-        console.log(p);
+        // console.log(p);
         const tUrl=`https://api.openweathermap.org/data/2.5/find?q=${p}&units=metric&type=accurate&mode=json&APPID=967ea2ee066696f316d6a84ed7e3f80f`;
         const object=await fetch(tUrl);
         // console.log("data fetch done");
@@ -129,13 +129,14 @@ export default function HomePage() {
     const [rainfall,setRainfall]=useState([]);
     const [windSpeed,setWindSpeed]=useState([]);
 
+    const [G,setG]=useState(null);
 
     const getHourlyData=async(lat,long)=>{
         console.log(lat,long);
         const Obj=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&hourly=temperature_2m,windspeed_10m,precipitation_probability,weathercode`);
         const D=await Obj.json();
         console.log(D);
-        const hour=["00:00","01:00","02:00","03:00","04:00","05:00","06:00","07:00","08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00","23:00"];
+        const hour=D["hourly"]["time"];
         const temperature=D["hourly"]["temperature_2m"];
         const rainfall=D["hourly"]["precipitation_probability"];
         const windSpeed=D["hourly"]["windspeed_10m"];
@@ -144,8 +145,19 @@ export default function HomePage() {
         setRainfall(rainfall);
         setWindSpeed(windSpeed);
     }
+    console.log(hour);
 
-    console.log(temperature);
+    const catchClickDate = (p) => {
+        // setDate(date);
+        // console.log(date);
+        setG(p*24)
+        // const element = document.getElementById(date + "T03:00");
+        // if (element) {
+        //     element.scrollIntoView({ behavior: 'smooth' });
+        // }
+    } 
+
+    // console.log(G);
 
     const [featureData, setFeatureData] = useState([]);
     const getSearchData = (val) => {
@@ -158,9 +170,17 @@ export default function HomePage() {
     }
 
     var arr1=[];
-    for(var i=0;i<24;i++){
+    for(var i=G;i<G+24;i++){
         arr1.push(i);
     }
+
+    const s = new Date();
+    const today = s.toISOString().split('T')[0];
+    const [selectedDate, setDate] = useState(today);
+
+     
+    
+    // console.log(G)
 
     return(
         <div className="container">
@@ -182,14 +202,14 @@ export default function HomePage() {
                         <DailyForecast temp={tmmp[6]} time={time[6]} code={code[6]}></DailyForecast> */}
 
                         {arr2.map((val,index)=>{
-                            return <DailyForecast temp={tmmp[val]} time={time[val]} code={code[val]}></DailyForecast>
+                            return <DailyForecast temp={tmmp[val]} time={time[val]} code={code[val]} catchClickDate={catchClickDate} i={val} ></DailyForecast>
                         })}
                     </div>
 
                     <div className="hourly-forecast-wrapper">
                     {
                         arr1.map((val1,index)=>{
-                            return <Hourly temperature_2m={temperature[val1]} time={hour[val1]} rainfall={rainfall[val1]} wind={windSpeed[val1]} key={index}></Hourly>  
+                            return <Hourly temperature_2m={temperature[val1]} tt={hour[index]} rainfall={rainfall[val1]} wind={windSpeed[val1]} key={index}></Hourly>  
                         })
                     }
                     </div>

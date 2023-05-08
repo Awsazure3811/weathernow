@@ -6,10 +6,14 @@ import "./Hourly.css";
 
 export default function Hourly(props){
     const description="";
-    console.log(props.temperature_2m);
+    const d=String(props.tt);
+    const T=d.slice(11,16);
+
+    // console.log(props.time);
+    // console.log(props.temperature_2m);
     return(
-        <div className="Container">
-            <div className="Time">{props.time}</div>
+        <div className="Container" >
+            <div className="Time">{T}</div>
             <div className="C1"><div className="Temp">{props.temperature_2m}<p className="deg">o</p></div>
             <div className="iconN"><img className="iconN" src="/Hourly/night.png"/></div></div>
             <div className="Description">{description}</div>
