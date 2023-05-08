@@ -6,7 +6,7 @@ export default function FeaturedCard(props) {
     const s=new Date();
 
     const icon=dict[props.icon];
-    console.log(icon);
+    // console.log(props);
 
     // console.log('Hello form featurecard');
     // console.log(props.temp);
@@ -22,7 +22,7 @@ export default function FeaturedCard(props) {
                     <h1 className="place-heading text-center">{cityName}, {countryIndia}</h1>
                 </div>
                 <div className="card-more-details">
-                    <p className="text-center">{s.toDateString().slice(0,3)}, {s.toDateString().slice(4,10)} 2023 | Local Time: {s.getHours()} : {s.getMinutes()}</p>
+                    <p className="text-center">{s.toDateString().slice(0,3)}, {s.toDateString().slice(4,10)} 2023 | Local Time: {props.currentTime}</p>
                 </div>
             </div>
             <div className="temperature-details">

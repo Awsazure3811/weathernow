@@ -7,11 +7,15 @@ export default function SearchSection(props) {
     const parseSelectedCity = (val) => {
         props.getSearchData(val);
     }
+
+    const setBool = (bool) => {
+        props.setBool(bool);
+    }
     
 
     return(
         <div className="search-content">
-            <SearchBox parseSelectedCity={parseSelectedCity}></SearchBox>
+            <SearchBox parseSelectedCity={parseSelectedCity} setBool={setBool}></SearchBox>
             <button className="search-btn"><img src="/icons/search-white.png" className="search-img"></img></button>
         </div>
     )
@@ -38,10 +42,14 @@ function SearchBox(props) {
         // document.getElementById('search-box-input').value = `${val[0]}, ${val[1]}, ${val[2]}`;
     }
 
+    const setBool = (bool) => {
+        props.setBool(bool);
+    }
+
     return(
         <div className="search-suggest">
             <input type="text" placeholder="Search city..." name="search-input" className="search-input" id="search-box-input" onChange={parseSearch} />
-            <GetSuggestion suggestions={suggestions} getCity={getCity}></GetSuggestion>
+            <GetSuggestion suggestions={suggestions} getCity={getCity} setBool={setBool}></GetSuggestion>
         </div>
     )
 }
@@ -51,6 +59,7 @@ function GetSuggestion(props) {
 
     const selectCity = (val) => {
         props.getCity(val);
+        props.setBool(true);
     }
 
     return( 

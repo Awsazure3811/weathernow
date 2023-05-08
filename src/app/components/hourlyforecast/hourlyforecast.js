@@ -1,7 +1,7 @@
 import "./hourlyforecast.css";
 
 export default function HourlyFunction(props) {
-    console.log(props.val1)
+    // console.log(props.val1)
 
     return (
         <div className="hourly-content">
