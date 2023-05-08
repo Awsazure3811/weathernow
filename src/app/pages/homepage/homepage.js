@@ -8,9 +8,10 @@ import ForecastDetails from "@/app/components/forecastdetails/forecastdetails";
 
 export default function HomePage(props) {
 
-
+    const [weatherCode, changeWeatherCode] = useState(null);
     const setWeatherCode = (code) => {
         props.setWeatherCode(code);
+        changeWeatherCode(code);
     }
 
     const [latitude, setLatitude] = useState(null);
@@ -188,7 +189,7 @@ export default function HomePage(props) {
                 <SearchSection getSearchData={getSearchData}></SearchSection>
             </div>
             <div className="featurecard-wrapper">
-                <FeaturedCard featureData={featureData} temp={temp} wecode={wecode} weather={weather} time={ftime} fell_like={fell_like} pressure={pressure} humidity={humidity} wind={wind}></FeaturedCard>
+                <FeaturedCard featureData={featureData} icon={weatherCode} temp={temp} wecode={wecode} weather={weather} time={ftime} fell_like={fell_like} pressure={pressure} humidity={humidity} wind={wind}></FeaturedCard>
             </div>
             <div className="forecast-section">
                 <div className="forecast-wrapper">

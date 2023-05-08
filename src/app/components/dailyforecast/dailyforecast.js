@@ -1,5 +1,5 @@
 import "./dailyforecast.css";
-
+import icon_data from "/public/daily_icon.json";
 
 export default function DailyForecast(props) {
     const d = new Date(props.time);
@@ -10,6 +10,23 @@ export default function DailyForecast(props) {
         props.catchClickDate(props.i);
     }
 
+    const inta=parseInt(props.temp);
+    console.log(inta);
+
+    const icon=[];
+    if(inta <=18){
+        icon.push("cold");
+    }else if (inta <=26){
+        icon.push("normal");
+    }
+    else if (inta <=34){
+        icon.push(["moderate"]);
+    }
+    else {
+        icon.push(["high"]);
+    }
+    console.log(icon);
+
     return(
         <div className="daily-forecast-content" onClick={selectDailyFC}>
             <div className="text">
@@ -17,7 +34,7 @@ export default function DailyForecast(props) {
             </div>
             <div className="side">
                 <h3>{props.temp}<sup><sup>o</sup>C</sup></h3>
-                <img src="/icons/sun-48.png" alt="React Logo" className="img" />
+                <img src={icon_data[icon[0]]} alt="React Logo" className="img" />
             </div>
             <div className="text">
                 <p>{dat}</p>

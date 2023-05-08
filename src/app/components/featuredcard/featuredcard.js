@@ -1,8 +1,12 @@
 import "./featuredcard.css";
+import dict from  "/public/dict.json";
 
 export default function FeaturedCard(props) {
     const d=new Date(props.time);
     const s=new Date();
+
+    const icon=dict[props.icon];
+    console.log(icon);
 
     // console.log('Hello form featurecard');
     // console.log(props.temp);
@@ -23,7 +27,7 @@ export default function FeaturedCard(props) {
             </div>
             <div className="temperature-details">
                 <div className="icon-temp-details">
-                    <img src="/icons/sun-48.png" alt="icon" className="temp-icon"></img>
+                    <img src={icon} alt="icon" className="temp-icon"></img>
                     <div className="temp-details">
                         <h1 className="temp-num">{props.temp}<sup><sup>o</sup>C</sup></h1>
                         <p className="temp-feel">Feels Like: {props.fell_like}</p>
