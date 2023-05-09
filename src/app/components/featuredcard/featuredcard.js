@@ -1,7 +1,7 @@
 import "./featuredcard.css";
 
-import icon_data from "/public/general.json";
-import image_data from "/public/dict.json";
+import icon_data from "@/app/general.json";
+import image_data from "@/app/dict.json";
 
 export default function FeaturedCard(props) {
     const d=new Date(props.time);
@@ -13,6 +13,8 @@ export default function FeaturedCard(props) {
 
     const cityName = props.featureData[0];
     const countryIndia = props.featureData[2];
+    // console.log(props.wecode);
+    // console.log(icon_data[props.wecode][0]);
     if(props.wecode!=undefined){
 
     return(

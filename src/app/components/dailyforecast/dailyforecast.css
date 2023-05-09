@@ -8,6 +8,7 @@
 .daily-forecast-content:hover{
     background-color: rgba(225, 225, 225, 0.257);
     border-radius: 0.4rem;
+    cursor: pointer;
 }
 /* .daily-forecast-content:hover{
     background-color: rgba(225, 225, 225, 0.257);

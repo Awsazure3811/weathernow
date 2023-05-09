@@ -1,11 +1,30 @@
 {
 	"01d": ["clear-sky1.jpg"],
-	"02d": ["few-clouds1.jpg", "few-clouds2.jpg"],
-	"03d": ["scattered-clouds1.jpg", "scattered-clouds2.jpg", "scattered-clouds3.jpg", "scattered-clouds4.jpg", "scattered-clouds5.jpg"],
+    "01n" : ["few-clouds1.jpg", "few-clouds2.jpg"],
+    "02d": ["few-clouds1.jpg", "few-clouds2.jpg"],
+    "02n" :["few-clouds1.jpg", "few-clouds2.jpg"],
+    "03d": ["scattered-clouds1.jpg", "scattered-clouds2.jpg", "scattered-clouds3.jpg", "scattered-clouds4.jpg", "scattered-clouds5.jpg"],
+    "03n" : ["few-clouds1.jpg", "few-clouds2.jpg"],
 	"04d": ["broken-clouds1.jpg"],
+    "04n" : ["few-clouds1.jpg", "few-clouds2.jpg"],
 	"09d": ["shower-rain1.jpg"],
-	"10d": ["rain1.jpg", "rain2.jpg"],
-	"11d": ["thunderstorm1.jpg"],
-	"13d": ["snow1.jpg"],
-	"50d": ["mist1.jpg", "mist2.jpg", "mist3.jpg"]
+    "09n" : ["few-clouds1.jpg", "few-clouds2.jpg"],
+    "10d": ["rain1.jpg", "rain2.jpg"],
+    "10n" :["few-clouds1.jpg", "few-clouds2.jpg"],
+    "11d": ["thunderstorm1.jpg"],
+    "11n" : ["few-clouds1.jpg", "few-clouds2.jpg"],
+    "13d": ["snow1.jpg"],
+    "13n" : ["few-clouds1.jpg", "few-clouds2.jpg"],
+    "50d": ["mist1.jpg", "mist2.jpg", "mist3.jpg"],
+    "51d" : ["few-clouds1.jpg", "few-clouds2.jpg"],
+    "52d" : ["few-clouds1.jpg", "few-clouds2.jpg"],
+    "53d" : ["few-clouds1.jpg", "few-clouds2.jpg"],
+    "54d" : ["few-clouds1.jpg", "few-clouds2.jpg"],
+    "55d" : ["few-clouds1.jpg", "few-clouds2.jpg"],
+    "56d" : ["few-clouds1.jpg", "few-clouds2.jpg"],
+    "57d" : ["few-clouds1.jpg", "few-clouds2.jpg"],
+    "58d" : ["few-clouds1.jpg", "few-clouds2.jpg"],
+    "59d" : ["few-clouds1.jpg", "few-clouds2.jpg"]
 }
+
+	

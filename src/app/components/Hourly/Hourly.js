@@ -3,8 +3,8 @@ import "./Hourly.css";
 // import night from '/Hourly/night.png'
 
 
-import icon_data from "/public/general.json";
-import image_data from "/public/dict.json";
+import icon_data from "@/app/general.json";
+import image_data from "@/app/dict.json";
 
 
 export default function Hourly(props){

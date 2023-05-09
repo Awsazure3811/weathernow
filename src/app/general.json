@@ -24,7 +24,7 @@
     "82": ["53d","Heavy Rain"],
     "85": ["55d","Snow Showers sightly"],
     "86": ["56d","Snow Showers heavy"],
-    "95 *": ["11d","Thunderstorm"],
+    "95": ["11d","Thunderstorm"],
     "96":["57d","Thunderstorm with sightly hall"],
-    "99 *":["58d","Thunderstorm with heavy hail"]
+    "99":["58d","Thunderstorm with heavy hail"]
 }

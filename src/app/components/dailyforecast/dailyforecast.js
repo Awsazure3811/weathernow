@@ -1,5 +1,5 @@
 import "./dailyforecast.css";
-import icon_data from "/public/daily_icon.json";
+import icon_data from "@/app/daily_icon.json";
 
 export default function DailyForecast(props) {
     const d = new Date(props.time);

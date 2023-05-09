@@ -35,8 +35,8 @@ export default function HomePage(props) {
         // console.log(object);
         const dict=await object.json();
         const data=dict["daily"];
-        console.log("data from ")
-        console.log(data);
+        // console.log("data from ")
+        // console.log(data);
         const temp=data["temperature_2m_max"];
         const time=data["time"];
         const code=data["weathercode"];
@@ -49,7 +49,9 @@ export default function HomePage(props) {
         featue_relpy(temp[0],code[0],fell_like,press,humid,wspeed[0],time[0],weather);
         setTmmp(temp);
         setTime(time);
+        // console.log(code);
         setCode(code);
+        setWeatherCode(code[0]);
         setRain(rain);
         setMinTemp(mini);
         setMaxTemp(maxi);
@@ -98,8 +100,8 @@ export default function HomePage(props) {
         // console.log("data fetch done");
         // console.log(object);
         const dict=await object.json();
-        console.log("//////////////////////////////////////");
-        console.log(dict);
+        // console.log("//////////////////////////////////////");
+        // console.log(dict);
         const weather = dict["list"]["0"]["weather"]['0']["main"];
         const lat=dict["list"]["0"]["coord"]["lat"];
         const long=dict["list"]["0"]["coord"]["lon"];
@@ -119,7 +121,10 @@ export default function HomePage(props) {
         const fell_like=dict["list"]["0"]["main"]["feels_like"];
         get_data(lat,long,humid,pressure,fell_like, weather);
         getHourlyData(lat,long);
-        setWeatherCode(dict["list"]["0"]["weather"]['0']["icon"]);
+        // setWeatherCode(dict["list"]["0"]["weather"]['0']["icon"]);
+        // setWeatherCode(code[0]);
+        // console.log(code);
+        // console.log(code[0]);
         setCurretTime(currentTime);
     }
 
@@ -192,27 +197,28 @@ export default function HomePage(props) {
             return(
                 <div className="on-search-content">
                     <div className="featurecard-wrapper">
-                <FeaturedCard featureData={featureData} icon={weatherCode} temp={temp} wecode={code[0]} weather={code[0]} time={ftime} fell_like={fell_like} pressure={pressure} humidity={humidity} wind={wind}></FeaturedCard>
-            </div>
-            <div className="forecast-section">
-                <div className="forecast-wrapper">
-                    <div className="daily-forecast-wrapper">
-
-                        {arr2.map((val,index)=>{
-                            return <DailyForecast temp={tmmp[val]} time={time[val]} code={code[val]} catchClickDate={catchClickDate} i={val} ></DailyForecast>
-                        })}
+                        <FeaturedCard featureData={featureData} icon={weatherCode} temp={temp} wecode={code[0]} weather={code[0]} time={ftime} fell_like={fell_like} pressure={pressure} humidity={humidity} wind={wind}></FeaturedCard>
                     </div>
+                    <div className="forecast-section">
+                        <div className="forecast-wrapper">
+                            <div className="daily-forecast-wrapper">
 
-                    <div className="hourly-forecast-wrapper">
-                    {
-                        arr1.map((val1,index)=>{
-                            return <Hourly temperature_2m={temperature[val1]} tt={hour[index]} weather={hourly_code[val1]} rainfall={rainfall[val1]} wind={windSpeed[val1]} key={index}></Hourly>  
-                        })
-                    }
+                                {arr2.map((val,index)=>{
+                                    return <DailyForecast key={index} temp={tmmp[val]} time={time[val]} code={code[val]} catchClickDate={catchClickDate} i={val} ></DailyForecast>
+                                })}
+                            </div>
+
+                            <div className="hourly-forecast-wrapper">
+                            {
+                                arr1.map((val1,index)=>{
+                                    return <Hourly temperature_2m={temperature[val1]} tt={hour[index]} weather={hourly_code[val1]} rainfall={rainfall[val1]} wind={windSpeed[val1]} key={index}></Hourly>  
+                                })
+                            }
+                            </div>
+                        </div>
+                    <div className="forecast-more-details">
+                        <ForecastDetails Max={maxTemp[up_para]} Min={minTemp[up_para]} rain={rain[up_para]} rise={sunrise[up_para]} set={sunset[up_para]} Temp={tmmp[up_para]} fell_like={tmmp[up_para]} weather={code[up_para]} ></ForecastDetails>
                     </div>
-                </div>
-                <div className="forecast-more-details">
-                    <ForecastDetails Max={maxTemp[up_para]} Min={minTemp[up_para]} rain={rain[up_para]} rise={sunrise[up_para]} set={sunset[up_para]} Temp={tmmp[up_para]} fell_like={tmmp[up_para]} weather={code[up_para]} ></ForecastDetails>
                 </div>
                 </div>
             )

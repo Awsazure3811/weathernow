@@ -3,14 +3,17 @@
 import { useState } from 'react';
 import HomePage from './pages/homepage/homepage';
 import backgroundData from "@/app/data.json";
+import general from '@/app/general.json';
 
 export default function Home() {
 
   const [background, setBackground] = useState("");
   const getBackground = (code) => {
-    const newCode = code.slice(0, -1) + "d";
+    // console.log(code);
+    const newCode = general[String(code)][0];
+    // console.log(general[code]);
     const randInt = Math.round(Math.random() * backgroundData[newCode].length);
-    console.log(randInt);
+    // console.log(randInt);
     setBackground("/backgrounds/" + backgroundData[newCode][randInt]);
   }
 
