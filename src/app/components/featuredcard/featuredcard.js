@@ -24,7 +24,7 @@ export default function FeaturedCard(props) {
                     <h1 className="place-heading text-center">{cityName}, {countryIndia}</h1>
                 </div>
                 <div className="card-more-details">
-                    <p className="text-center">{s.toDateString().slice(0,3)}, {s.toDateString().slice(4,10)} 2023 | Local Time: {props.currentTime}</p>
+                    <p className="text-center">{s.toDateString().slice(0,3)}, {s.toDateString().slice(4,10)} 2023</p>
                 </div>
             </div>
             <div className="temperature-details">
