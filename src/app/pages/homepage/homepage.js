@@ -45,11 +45,11 @@ export default function HomePage(props) {
     const [time,setTime]=useState([]);
     const [code,setCode]=useState([]);
     
-    const [rain,setRain]=useState(null);
-    const [minTemp,setMinTemp]=useState(null);
-    const [maxTemp,setMaxTemp]=useState(null);
-    const [sunrise,setSunrise]=useState(null);
-    const [sunset,setSunset]=useState(null);
+    const [rain,setRain]=useState([]);
+    const [minTemp,setMinTemp]=useState([]);
+    const [maxTemp,setMaxTemp]=useState([]);
+    const [sunrise,setSunrise]=useState([]);
+    const [sunset,setSunset]=useState([]);
 
     // const [lat,setLat]=useState(null);
     // const [long,setLong]=useState(null);
@@ -62,15 +62,17 @@ export default function HomePage(props) {
         // console.log(object);
         const dict=await object.json();
         const data=dict["daily"];
+        console.log("data from ")
+        console.log(data);
         const temp=data["temperature_2m_max"];
         const time=data["time"];
         const code=data["weathercode"];
         const wspeed=data["windspeed_10m_max"];
-        const rain=data["precipitation_probability_mean"][0];
-        const mini=data["temperature_2m_min"][0];
-        const maxi=data["temperature_2m_max"][0];
-        const rise=data["sunrise"][0];
-        const set=data["sunset"][0];
+        const rain=data["precipitation_probability_mean"];
+        const mini=data["temperature_2m_min"];
+        const maxi=data["temperature_2m_max"];
+        const rise=data["sunrise"];
+        const set=data["sunset"];
         featue_relpy(temp[0],code[0],fell_like,press,humid,wspeed[0],time[0],weather);
         setTmmp(temp);
         setTime(time);
@@ -106,12 +108,16 @@ export default function HomePage(props) {
     
     const getcoord=async (p) => {
         // console.log(p);
+        // balukey=74fbf5bd6a251dec081a84f838a52c1e;
+        // bogikey=967ea2ee066696f316d6a84ed7e3f80f;
+        //sundheepkey=bca550a11189e3431d97b0625176bb0d
         const tUrl=`https://api.openweathermap.org/data/2.5/find?q=${p}&units=metric&type=accurate&mode=json&APPID=967ea2ee066696f316d6a84ed7e3f80f`;
         const object=await fetch(tUrl);
         // console.log("data fetch done");
         // console.log(object);
         const dict=await object.json();
-        // console.log(dict["list"]["0"]);
+        console.log("//////////////////////////////////////");
+        console.log(dict);
         const weather = dict["list"]["0"]["weather"]['0']["main"];
         const lat=dict["list"]["0"]["coord"]["lat"];
         const long=dict["list"]["0"]["coord"]["lon"];
@@ -128,14 +134,14 @@ export default function HomePage(props) {
     const [temperature,setTemperature]=useState([]);
     const [rainfall,setRainfall]=useState([]);
     const [windSpeed,setWindSpeed]=useState([]);
-
+    const [hourly_code,setHourly_code]=useState([]);
     const [G,setG]=useState(null);
 
     const getHourlyData=async(lat,long)=>{
         console.log(lat,long);
         const Obj=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&hourly=temperature_2m,windspeed_10m,precipitation_probability,weathercode`);
         const D=await Obj.json();
-        console.log(D);
+        setHourly_code(D["hourly"]["weathercode"]);
         const hour=D["hourly"]["time"];
         const temperature=D["hourly"]["temperature_2m"];
         const rainfall=D["hourly"]["precipitation_probability"];
@@ -147,10 +153,12 @@ export default function HomePage(props) {
     }
     console.log(hour);
 
+    const [up_para,setUp_para]=useState(0);
     const catchClickDate = (p) => {
-        // setDate(date);
-        // console.log(date);
+ 
         setG(p*24)
+        setUp_para(p);
+
         // const element = document.getElementById(date + "T03:00");
         // if (element) {
         //     element.scrollIntoView({ behavior: 'smooth' });
@@ -189,7 +197,7 @@ export default function HomePage(props) {
                 <SearchSection getSearchData={getSearchData}></SearchSection>
             </div>
             <div className="featurecard-wrapper">
-                <FeaturedCard featureData={featureData} icon={weatherCode} temp={temp} wecode={wecode} weather={weather} time={ftime} fell_like={fell_like} pressure={pressure} humidity={humidity} wind={wind}></FeaturedCard>
+                <FeaturedCard featureData={featureData} icon={weatherCode} temp={temp} wecode={code[0]} weather={code[0]} time={ftime} fell_like={fell_like} pressure={pressure} humidity={humidity} wind={wind}></FeaturedCard>
             </div>
             <div className="forecast-section">
                 <div className="forecast-wrapper">
@@ -209,13 +217,13 @@ export default function HomePage(props) {
                     <div className="hourly-forecast-wrapper">
                     {
                         arr1.map((val1,index)=>{
-                            return <Hourly temperature_2m={temperature[val1]} tt={hour[index]} rainfall={rainfall[val1]} wind={windSpeed[val1]} key={index}></Hourly>  
+                            return <Hourly temperature_2m={temperature[val1]} tt={hour[index]} weather={hourly_code[val1]} rainfall={rainfall[val1]} wind={windSpeed[val1]} key={index}></Hourly>  
                         })
                     }
                     </div>
                 </div>
                 <div className="forecast-more-details">
-                    <ForecastDetails Max={maxTemp} Min={minTemp} rain={rain} rise={sunrise} set={sunset} Temp={temp} fell_like={fell_like} weather={weather} ></ForecastDetails>
+                    <ForecastDetails Max={maxTemp[up_para]} Min={minTemp[up_para]} rain={rain[up_para]} rise={sunrise[up_para]} set={sunset[up_para]} Temp={tmmp[up_para]} fell_like={tmmp[up_para]} weather={code[up_para]} ></ForecastDetails>
                 </div>
             </div>
         </div>

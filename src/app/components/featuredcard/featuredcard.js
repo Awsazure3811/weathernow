@@ -1,19 +1,19 @@
 import "./featuredcard.css";
-import dict from  "/public/dict.json";
+
+import icon_data from "/public/general.json";
+import image_data from "/public/dict.json";
 
 export default function FeaturedCard(props) {
     const d=new Date(props.time);
     const s=new Date();
 
-    const icon=dict[props.icon];
-    console.log(icon);
 
     // console.log('Hello form featurecard');
     // console.log(props.temp);
 
     const cityName = props.featureData[0];
     const countryIndia = props.featureData[2];
-
+    if(props.wecode!=undefined){
 
     return(
         <div className="featurecard">
@@ -27,11 +27,11 @@ export default function FeaturedCard(props) {
             </div>
             <div className="temperature-details">
                 <div className="icon-temp-details">
-                    <img src={icon} alt="icon" className="temp-icon"></img>
+                    <img src={image_data[icon_data[props.wecode][0]]} alt="icon" className="temp-icon"></img>
                     <div className="temp-details">
                         <h1 className="temp-num">{props.temp}<sup><sup>o</sup>C</sup></h1>
                         <p className="temp-feel">Feels Like: {props.fell_like}</p>
-                        <h1 className="text-center mt-2">{props.weather}</h1>
+                        <h1 className="text-center mt-2">{icon_data[props.wecode][1]}</h1>
                     </div>
                 </div>
                 <div className="pre-hum-wi">
@@ -42,4 +42,5 @@ export default function FeaturedCard(props) {
             </div>
         </div>
     )
+}
 }

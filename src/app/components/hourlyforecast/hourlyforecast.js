@@ -1,5 +1,8 @@
 import "./hourlyforecast.css";
 
+import icon_data from "/public/general.json";
+import image_data from "/public/dict.json";
+
 export default function HourlyFunction(props) {
     console.log(props.val1)
 
@@ -10,7 +13,7 @@ export default function HourlyFunction(props) {
             </div>
             <div className="side">
                 <h3>33<sup><sup>o</sup>C</sup></h3>
-                <img src="/icons/sun-48.png" alt="React Logo" className="img" />
+                <img src={image_data[icon_data["95 *"]]} alt="React Logo" className="img" />
             </div>
             <div className="hum-wind">
                 <img src="/icons/sun-48.png" alt="React Logo" className="img" />

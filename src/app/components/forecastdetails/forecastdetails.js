@@ -1,7 +1,11 @@
 import "./forecastdetails.css";
 
+import icon_data from "/public/general.json";
+import image_data from "/public/dict.json";
+
+
 export default function ForecastDetails(props) {
-    
+    if(props.weather!=undefined){
     return(
         <div className="forecastdetails-content">
             <div className="details-left">
@@ -15,13 +19,14 @@ export default function ForecastDetails(props) {
                 </div>
             </div>
             <div className="details-right">
-                <img src="/icons/sun-48.png" className="details-img"></img>
+                <img src={image_data[icon_data[props.weather][0]]} className="details-img"></img>
                 <div className="temp-more-details">
                     <h1 className="details-temp">{props.Temp}<sup><sup>o</sup>C</sup></h1>
                     <p className="feellike-p">Feels like: {props.fell_like}</p>
-                    <p>{props.weather}</p>
+                    <p>{icon_data[props.weather][1]}</p>
                 </div>
             </div>
         </div>
     )
+}
 }
