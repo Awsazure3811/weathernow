@@ -14,28 +14,28 @@ export default function HomePage(props) {
         changeWeatherCode(code);
     }
 
-    const [latitude, setLatitude] = useState(null);
-    const [longitude, setLongitude] = useState(null);
-    const getLocation = () => {
+    // const [latitude, setLatitude] = useState(null);
+    // const [longitude, setLongitude] = useState(null);
+    // const getLocation = () => {
         
-        useEffect(() => {
-            // Check if browser supports geolocation
-            if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(
-                (position) => {
-                setLatitude(position.coords.latitude);
-                setLongitude(position.coords.longitude);
-                },
-                (error) => {
-                console.log(error.message);
-                }
-            );
-            } else {
-            console.log('Geolocation is not supported by this browser.');
-            }
-        }, []);
-    }
-    getLocation();
+    //     useEffect(() => {
+    //         // Check if browser supports geolocation
+    //         if (navigator.geolocation) {
+    //         navigator.geolocation.getCurrentPosition(
+    //             (position) => {
+    //             setLatitude(position.coords.latitude);
+    //             setLongitude(position.coords.longitude);
+    //             },
+    //             (error) => {
+    //             console.log(error.message);
+    //             }
+    //         );
+    //         } else {
+    //         console.log('Geolocation is not supported by this browser.');
+    //         }
+    //     }, []);
+    // }
+    // getLocation();
     
 
     // console.log(latitude);
@@ -177,6 +177,7 @@ export default function HomePage(props) {
     // console.log(G);
 
     const [featureData, setFeatureData] = useState([]);
+
     const getSearchData = (val) => {
         setFeatureData(val);
         getcoord(val[0]);
@@ -237,11 +238,15 @@ export default function HomePage(props) {
     
     // console.log(G)
 
+    const keyInput=(p)=>{
+        getcoord(p);
+    }
+
     return(
         <div className="container">
             {/* <button onClick={sample}>Clickme</button> */}
             <div className="search-section-wrapper">
-                <SearchSection getSearchData={getSearchData} setBool={setBool}></SearchSection>
+                <SearchSection getSearchData={getSearchData} setBool={setBool} keyInput={keyInput}></SearchSection>
             </div>
             {onSearchContent(displayBool)}
         </div>
