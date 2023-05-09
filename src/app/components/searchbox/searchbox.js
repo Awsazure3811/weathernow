@@ -2,6 +2,10 @@ import { useState } from "react";
 import "./searchbox.css";
 import { getCitiesByName } from "countrycitystatejson";
 
+
+
+
+
 export default function SearchSection(props) {
 
     const parseSelectedCity = (val) => {
@@ -11,12 +15,21 @@ export default function SearchSection(props) {
     const setBool = (bool) => {
         props.setBool(bool);
     }
-    
+
+    // const 
+    const send=()=>{
+        const val=document.getElementById("search-box-input").value;
+        // props.getCity()
+        props.setBool(true);
+        props.keyInput(val);
+
+    }
+
 
     return(
         <div className="search-content">
-            <SearchBox parseSelectedCity={parseSelectedCity} setBool={setBool}></SearchBox>
-            <button className="search-btn"><img src="/icons/search-white.png" className="search-img"></img></button>
+            <SearchBox parseSelectedCity={parseSelectedCity} setBool={setBool} ></SearchBox>
+            <button className="search-btn" onClick={send}><img src="/icons/search-white.png" className="search-img" ></img></button>
         </div>
     )
 }
@@ -46,9 +59,11 @@ function SearchBox(props) {
         props.setBool(bool);
     }
 
+    // onKeyUp={(e)=>{if(e.key=="Enter"){keyInput();}}}
+
     return(
         <div className="search-suggest">
-            <input type="text" placeholder="Search city..." name="search-input" className="search-input" id="search-box-input" onChange={parseSearch} />
+            <input type="text" placeholder="Search city/Pincode..." name="search-input" className="search-input" id="search-box-input" onChange={parseSearch}/>
             <GetSuggestion suggestions={suggestions} getCity={getCity} setBool={setBool}></GetSuggestion>
         </div>
     )

@@ -8,7 +8,7 @@
 .card-details {
     /* background-color: red; */
     height: inherit;
-    width: 44%;
+    width: 56%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,7 +18,7 @@
 .temperature-details {
     /* background-color: green; */
     height: inherit;
-    width: 56%;
+    width: 44%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -64,7 +64,7 @@
 }
 
 .pre-hum-wi {
-    width: 18rem;
+    width: 28rem;
 }
 
 .pre-hum-wi-text, .pre-hum-wi {
@@ -76,5 +76,9 @@
 
 .pre-hum-wi-icon {
     height: 1.4rem;
-    margin-right: 8px;
+    margin-right: 6px;
+}
+.units{
+    display: flex;
+
 }
