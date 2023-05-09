@@ -22,7 +22,7 @@ export default function FeaturedCard(props) {
                     <h1 className="place-heading text-center">{cityName}, {countryIndia}</h1>
                 </div>
                 <div className="card-more-details">
-                    <p className="text-center">{s.toDateString().slice(0,3)}, {s.toDateString().slice(4,10)} 2023 | Local Time: {s.getHours()} : {s.getMinutes()}</p>
+                    <p className="text-center">{s.toDateString().slice(0,3)}, {s.toDateString().slice(4,10)} 2023 | Local Time: {props.currentTime}</p>
                 </div>
             </div>
             <div className="temperature-details">
@@ -35,9 +35,9 @@ export default function FeaturedCard(props) {
                     </div>
                 </div>
                 <div className="pre-hum-wi">
-                    <div className="pre-hum-wi-text" style={{margin:"20px"}}><img src="/icons/water-48-white.png" alt="icon" className="pre-hum-wi-icon"></img> Humidity {props.humidity}%</div>
-                    <div className="pre-hum-wi-text" style={{margin:"20px"}}><img src="/icons/wind-48-white.png" alt="icon" className="pre-hum-wi-icon"></img> Wind {props.wind}Km/h</div>
-                    <div className="pre-hum-wi-text" style={{margin:"20px"}}><img src="/icons/pressure-48-white.png" alt="icon" className="pre-hum-wi-icon"></img> Pressure {props.pressure}bar</div>
+                    <div className="pre-hum-wi-text" style={{margin:"1.7rem"}}><img src="/icons/water-48-white.png" alt="icon" className="pre-hum-wi-icon"></img> Humidity {props.humidity}%</div>
+                    <div className="pre-hum-wi-text" style={{margin:"1.7rem"}}><img src="/icons/wind-48-white.png" alt="icon" className="pre-hum-wi-icon"></img>Wind {props.wind}Km/h</div>
+                    <div className="pre-hum-wi-text" style={{margin:"1.7rem"}}><img src="/icons/pressure-48-white.png" alt="icon" className="pre-hum-wi-icon"></img> Pressure {props.pressure} hPa</div>
                 </div>
             </div>
         </div>

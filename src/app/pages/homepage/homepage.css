@@ -54,12 +54,15 @@
 
 .hourly-forecast-wrapper {
     background-color: #00000062;
-    overflow:auto;
     border-radius: 1rem;
     /* position: absolute; */
     display: flex;
     width: 40rem;
     margin: 1.7rem;
+    overflow:hidden;
+}
+.hourly-forecast-wrapper:hover{
+    overflow:auto;
 }
 
 .forecast-wrapper {

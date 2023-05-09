@@ -11,7 +11,7 @@ export default function DailyForecast(props) {
     }
 
     const inta=parseInt(props.temp);
-    console.log(inta);
+    // console.log(inta);
 
     const icon=[];
     if(inta <=18){
@@ -25,7 +25,7 @@ export default function DailyForecast(props) {
     else {
         icon.push(["high"]);
     }
-    console.log(icon);
+    // console.log(icon);
 
     return(
         <div className="daily-forecast-content" onClick={selectDailyFC}>

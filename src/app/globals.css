@@ -22,11 +22,14 @@ body {
 }
 
 .main {
-  height: 100vh;
+  height: 100%;
   display: flex;
   justify-content: center;
-  /* align-items: center; */
   flex-direction: column;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size:cover;
+
 }
 
 .navbar {
@@ -34,5 +37,4 @@ body {
   padding: 2rem;
   height: fit-content;
   width: fit-content;
-  /* margin: 0; */
 }

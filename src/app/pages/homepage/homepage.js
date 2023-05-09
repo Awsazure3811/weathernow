@@ -14,33 +14,6 @@ export default function HomePage(props) {
         changeWeatherCode(code);
     }
 
-    const [latitude, setLatitude] = useState(null);
-    const [longitude, setLongitude] = useState(null);
-    const getLocation = () => {
-        
-        useEffect(() => {
-            // Check if browser supports geolocation
-            if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(
-                (position) => {
-                setLatitude(position.coords.latitude);
-                setLongitude(position.coords.longitude);
-                },
-                (error) => {
-                console.log(error.message);
-                }
-            );
-            } else {
-            console.log('Geolocation is not supported by this browser.');
-            }
-        }, []);
-    }
-    getLocation();
-    
-
-    // console.log(latitude);
-    // console.log(longitude);
-
     const [tmmp,setTmmp]=useState([]);
     const [time,setTime]=useState([]);
     const [code,setCode]=useState([]);
@@ -94,6 +67,7 @@ export default function HomePage(props) {
     const [wind,setWind]=useState(null);   
     const [ftime,setFtime]=useState(null);  
     const [weather, setWeather]=useState(null);
+    const [currentTime, setCurretTime] = useState(null);
 
     const featue_relpy= async(temp,wecode,fell_like,pressure,humidity,wind,time,weather) =>{
         setTemp(temp);
@@ -108,10 +82,18 @@ export default function HomePage(props) {
     
     const getcoord=async (p) => {
         // console.log(p);
+
         // balukey=74fbf5bd6a251dec081a84f838a52c1e;
         // bogikey=967ea2ee066696f316d6a84ed7e3f80f;
         //sundheepkey=bca550a11189e3431d97b0625176bb0d
-        const tUrl=`https://api.openweathermap.org/data/2.5/find?q=${p}&units=metric&type=accurate&mode=json&APPID=967ea2ee066696f316d6a84ed7e3f80f`;
+
+        // balu: 74fbf5bd6a251dec081a84f838a52c1e
+        // boghi: 967ea2ee066696f316d6a84ed7e3f80f
+        // sandeep: a222156cbebb29be7542966ade9391cb
+        // sandeep2: 459a66ccbc83d8c55865d4c8b6a0ef74
+        // sandeep3: bca550a11189e3431d97b0625176bb0d
+        const tUrl=`https://api.openweathermap.org/data/2.5/find?q=${p}&units=metric&type=accurate&mode=json&APPID=bca550a11189e3431d97b0625176bb0d`;
+
         const object=await fetch(tUrl);
         // console.log("data fetch done");
         // console.log(object);
@@ -121,6 +103,16 @@ export default function HomePage(props) {
         const weather = dict["list"]["0"]["weather"]['0']["main"];
         const lat=dict["list"]["0"]["coord"]["lat"];
         const long=dict["list"]["0"]["coord"]["lon"];
+        const dt = dict.list[0].dt;
+        // console.log(dt);
+        // const currentDate = new Date((dt + 530) + 1000).toLocaleString();
+        // console.log(currentDate);
+        const currentTimestamp = Date.now(); // Get the current timestamp
+        const timeZoneOffset = new Date().getTimezoneOffset() * 60 * 1000;
+        const targetTimestamp = currentTimestamp + timeZoneOffset + (long * 4 * 60 * 1000) + (lat * 2 * 60 * 1000);
+        const targetDate = new Date(targetTimestamp);
+        const currentTime = String(targetDate.toLocaleString()).slice(9, -6) + " " + String(targetDate.toLocaleString()).slice(-2,);
+        // console.log(currentTime);
         const humid=dict["list"]["0"]["main"]["humidity"];
         const pressure=dict["list"]["0"]["main"]["pressure"];
         const win_spd=dict["list"]["0"]["wind"]["speed"];
@@ -128,6 +120,7 @@ export default function HomePage(props) {
         get_data(lat,long,humid,pressure,fell_like, weather);
         getHourlyData(lat,long);
         setWeatherCode(dict["list"]["0"]["weather"]['0']["icon"]);
+        setCurretTime(currentTime);
     }
 
     const [hour,setHour]=useState([]);
@@ -138,7 +131,7 @@ export default function HomePage(props) {
     const [G,setG]=useState(null);
 
     const getHourlyData=async(lat,long)=>{
-        console.log(lat,long);
+        // console.log(lat,long);
         const Obj=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&hourly=temperature_2m,windspeed_10m,precipitation_probability,weathercode`);
         const D=await Obj.json();
         setHourly_code(D["hourly"]["weathercode"]);
@@ -151,7 +144,7 @@ export default function HomePage(props) {
         setRainfall(rainfall);
         setWindSpeed(windSpeed);
     }
-    console.log(hour);
+    // console.log(hour);
 
     const [up_para,setUp_para]=useState(0);
     const catchClickDate = (p) => {
@@ -168,6 +161,7 @@ export default function HomePage(props) {
     // console.log(G);
 
     const [featureData, setFeatureData] = useState([]);
+
     const getSearchData = (val) => {
         setFeatureData(val);
         getcoord(val[0]);
@@ -186,28 +180,23 @@ export default function HomePage(props) {
     const today = s.toISOString().split('T')[0];
     const [selectedDate, setDate] = useState(today);
 
-     
-    
-    // console.log(G)
+    const [displayBool, setDisplayBool] = useState(false);
 
-    return(
-        <div className="container">
-            {/* <button onClick={sample}>Clickme</button> */}
-            <div className="search-section-wrapper">
-                <SearchSection getSearchData={getSearchData}></SearchSection>
-            </div>
-            <div className="featurecard-wrapper">
+    const setBool = (bool) => {
+        setDisplayBool(bool);
+    }
+    
+    const onSearchContent = (bool) => {
+        // const bool = true;
+        if (bool) {
+            return(
+                <div className="on-search-content">
+                    <div className="featurecard-wrapper">
                 <FeaturedCard featureData={featureData} icon={weatherCode} temp={temp} wecode={code[0]} weather={code[0]} time={ftime} fell_like={fell_like} pressure={pressure} humidity={humidity} wind={wind}></FeaturedCard>
             </div>
             <div className="forecast-section">
                 <div className="forecast-wrapper">
                     <div className="daily-forecast-wrapper">
-                        {/* <DailyForecast temp={tmmp[1]} time={time[1]} code={code[1]}></DailyForecast>
-                        <DailyForecast temp={tmmp[2]} time={time[2]} code={code[2]}></DailyForecast>
-                        <DailyForecast temp={tmmp[3]} time={time[3]} code={code[3]}></DailyForecast>
-                        <DailyForecast temp={tmmp[4]} time={time[4]} code={code[4]}></DailyForecast>
-                        <DailyForecast temp={tmmp[5]} time={time[5]} code={code[5]}></DailyForecast>
-                        <DailyForecast temp={tmmp[6]} time={time[6]} code={code[6]}></DailyForecast> */}
 
                         {arr2.map((val,index)=>{
                             return <DailyForecast temp={tmmp[val]} time={time[val]} code={code[val]} catchClickDate={catchClickDate} i={val} ></DailyForecast>
@@ -225,7 +214,28 @@ export default function HomePage(props) {
                 <div className="forecast-more-details">
                     <ForecastDetails Max={maxTemp[up_para]} Min={minTemp[up_para]} rain={rain[up_para]} rise={sunrise[up_para]} set={sunset[up_para]} Temp={tmmp[up_para]} fell_like={tmmp[up_para]} weather={code[up_para]} ></ForecastDetails>
                 </div>
+                </div>
+            )
+        }
+    }
+    
+    // console.log(G)
+
+    const keyInput=(p)=>{
+        getcoord(p);
+    }
+
+    return(
+        <div className="container">
+            {/* <button onClick={sample}>Clickme</button> */}
+            <div className="search-section-wrapper">
+
+            
+
+                <SearchSection getSearchData={getSearchData} setBool={setBool} keyInput={keyInput}></SearchSection>
+
             </div>
+            {onSearchContent(displayBool)}
         </div>
         
     )

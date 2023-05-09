@@ -4,7 +4,7 @@ import icon_data from "/public/general.json";
 import image_data from "/public/dict.json";
 
 export default function HourlyFunction(props) {
-    console.log(props.val1)
+    // console.log(props.val1)
 
     return (
         <div className="hourly-content">
