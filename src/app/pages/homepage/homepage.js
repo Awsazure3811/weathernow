@@ -51,6 +51,8 @@ export default function HomePage(props) {
         setTime(time);
         // console.log(code);
         setCode(code);
+        console.log(code);
+        // console.log(code[0]);
         setWeatherCode(code[0]);
         setRain(rain);
         setMinTemp(mini);

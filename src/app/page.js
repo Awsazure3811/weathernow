@@ -7,18 +7,21 @@ import general from '@/app/general.json';
 
 export default function Home() {
 
-  const [background, setBackground] = useState("");
+  // const [background, setBackground] = useState("");
   const getBackground = (code) => {
     // console.log(code);
     const newCode = general[String(code)][0];
     // console.log(general[code]);
-    const randInt = Math.round(Math.random() * backgroundData[newCode].length);
+    console.log(backgroundData[newCode]);
+    const randInt = Math.round(Math.random() * (backgroundData[newCode].length - 1));
+    console.log(randInt);
     // console.log(randInt);
-    setBackground("/backgrounds/" + backgroundData[newCode][randInt]);
+    // setBackground();
+    document.body.style.backgroundImage = `url(/backgrounds/${backgroundData[newCode][randInt]})`;
   }
 
   return (
-    <main className='main' style={{backgroundImage: `url(${background})`}}>
+    <main className='main'>
       <nav className='navbar'>
         <div className='logo'>Weather Now</div>
       </nav>

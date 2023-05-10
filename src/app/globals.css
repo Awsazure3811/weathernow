@@ -26,9 +26,6 @@ body {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size:cover;
 
 }
 
@@ -37,4 +34,9 @@ body {
   padding: 2rem;
   height: fit-content;
   width: fit-content;
+}
+
+.bg-change-dyn {
+  background-repeat: no-repeat;
+  background-size: auto;
 }
