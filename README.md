@@ -1,3 +1,8 @@
+## WeatherNow
+
+Introducing WeatherNow: a web application developed by our team of three dedicated individuals. With WeatherNow, you can easily access accurate weather forecasts for any city, providing hourly details for the next seven days. The application also includes smart city suggestions to streamline the search process. Additionally, WeatherNow offers an immersive experience by dynamically changing background images based on the current weather conditions. 
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
