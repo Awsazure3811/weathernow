@@ -63,7 +63,7 @@ function SearchBox(props) {
 
     return(
         <div className="search-suggest">
-            <input type="text" placeholder="Search city/Pincode..." name="search-input" className="search-input" id="search-box-input" onChange={parseSearch}/>
+            <input type="text" placeholder="Search city..." name="search-input" className="search-input" id="search-box-input" onChange={parseSearch}/>
             <GetSuggestion suggestions={suggestions} getCity={getCity} setBool={setBool}></GetSuggestion>
         </div>
     )
